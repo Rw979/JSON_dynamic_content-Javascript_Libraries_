@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: "Spoqa Han Sans", sans-serif;
+  background-color: #EB7A77;
+}
+
+#mainContainer{
+  display: flex;
+  background: #FEDFE1;
+  flex-direction: column;
+  width: 60vw;
+  margin-top: 10vw;
+  margin-bottom: auto; 
+  margin-left: auto;
+  margin-right: auto;
+  height: 1000vh;
+}
