@@ -53,6 +53,18 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   }
 
+
+  let newDiv = document.createElement("DIV");
+  newDiv.classList.add("ourSpecialDiv");
+
+  let newImg = document.createElement("IMG");
+  newImg.classList.add("anAmazingImage");
+  newImg.src = "https://rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/twicelogo.png";
+
+  newDiv.appendChild(newImg);
+
+  headerGrid.appendChild(newDiv);
+
 });
 
 function createProjectPreview(incomingJSON) {
