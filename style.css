@@ -8,14 +8,36 @@ body {
   background-color: #EB7A77;
 }
 
+#headerGrid{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vw;
+}
+
 #mainContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 4vw;
+  margin-bottom: auto; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+#mainContainer_left{
   display: flex;
   background: #FEDFE1;
   flex-direction: column;
   width: 60vw;
-  margin-top: 10vw;
-  margin-bottom: auto; 
-  margin-left: auto;
-  margin-right: auto;
   height: 1000vh;
+}
+
+#mainContainer_right{
+  display: flex;
+  color: #FEDFE1;
+  flex-direction: column;
+  margin-left: 20px;
 }

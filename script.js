@@ -1,92 +1,77 @@
-let pageTitleElement;
-let outputGridElement;
-let projectDisplayElement;
+let headerGrid;
+let mainContainer;
 
-let portfolioCollection = [
-   {
-   	"category": "Profile",
-   	"id" : "twice1",
-   	"description" : "bieguanwoxinazaixkjbc",
-   	"image" : "https://www.pinterest.com/pin/9640586695987722/",
-   }
+let twiceCollection = [
+  {
+  	"itemTitle": "NAYEON",
+  	"category" : "Profile",
+  	"descirption" : "2003/1025",
+  	"image" : "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/twicelogo.png"
+  }
+
 
 ];
 
 document.addEventListener("DOMContentLoaded", function(){
+	headerGrid = document.getElementById('headerGrid');
+	mainContainer = document.getElementById("mainContainer");
+	mainContainerRight = document.getElementById("mainContainer_right");
 
-  /* Get page element references */
-  pageTitleElement = document.getElementById("pageTitle");
-  outputGridElement = document.getElementById("outputGrid");
-  projectDisplayElement = document.getElementById("projectDisplay");
+	let queryString = window.location.search;
+	let urlParams = new URLSearchParams(queryString);
+	let urlSection = urlParams.get('section');
+	let urlID = urlParams.get('id');
 
-  /* Get URL Params */
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  let urlSection = urlParams.get('section');
-  let urlID = urlParams.get('id');
-
-  if (urlSection != "Profile") { /* Display project previews in grid */
-
-    /* Set page title if we are in a specific section */
-    if (urlSection == "Album") {
-      pageTitleElement.innerText = "Album";
-    }
-    else if (urlSection == "Gallery") {
-      pageTitleElement.innerText = "Gallery";
-    }
-
-    /* Create thumbnails for matching category, or all */
-    for (let i = 0; i < portfolioCollection.length; i++) {
-      if (portfolioCollection[i]["category"] == urlSection || urlSection == "" || urlSection == null){
-        createProjectPreview(portfolioCollection[i]);
-      }
-    }
-
-  }
-
-  else {
-    /* Display individual project by trying to match the "ID" value */
-    for (let i = 0; i < portfolioCollection.length; i++) {
-      if (portfolioCollection[i]["id"] == urlID) {
-        createProjectPage(portfolioCollection[i]);
-      }
-    }
-  }
-
-
-  let newDiv = document.createElement("DIV");
-  newDiv.classList.add("ourSpecialDiv");
-
-  let newImg = document.createElement("IMG");
-  newImg.classList.add("anAmazingImage");
-  newImg.src = "https://rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/twicelogo.png";
-
-  newDiv.appendChild(newImg);
-
-  headerGrid.appendChild(newDiv);
-
-});
-
-function createProjectPreview(incomingJSON) {
-  let newPreviewElement = document.createElement("div");
-  newPreviewElement.classList.add("projectPreview");
-
-  let newPreviewImage = document.createElement("img");
-  newPreviewImage.classList.add("projectImage");
-  newPreviewImage.src = incomingJSON["image"];
-  newPreviewImage.alt = incomingJSON["description"];
-
-  newPreviewElement.appendChild(newPreviewImage);
-  outputGridElement.appendChild(newPreviewElement);
+		for (let i = 0; i < twiceCollection.length; i++) {
+		  if (twiceCollection[i]["category"] == urlSection || urlSection == "" || urlSection == null){
+		  	createTwicepreview(twiceCollection[i]);
+		}
+	}
 }
 
+/*Json for headerGrid*/
+let imageData = {
+  "imageURL": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/twicelogo.png",
+  "text": "Twice"
+};
+
+let headerGrid = document.getElementById('headerGrid');
+
+let newImg = document.createElement('img');
+newImg.src = imageData.imageURL;
+newImg.style.width = '300px'; 
+
+let newText = document.createTextNode(imageData.text);
+
+headerGrid.appendChild(newImg);
+headerGrid.appendChild(newText);
 
 
+/*Json for mainContainer_right*/
 
+let submenutext = {
+  "Profile": ["NAYEON", "JEONGYEON", "MOMO", "SANA", "JIHYO", "MINA", "DAHYUN", "CHAEYOUNG", "TZUYU"],
+  "Gallery": ["Ready to Love", "Let Me Know"]
+};
 
+let mainContainerRight = document.getElementById("mainContainer_right");
 
+for (let section in submenutext) {
+  let newHeading = document.createElement("h2");
+  newHeading.innerText = section;
 
+  mainContainerRight.appendChild(newHeading);
 
+  
+  for (let i = 0; i < submenutext[section].length; i++) {
+ 
+    let newParagraph = document.createElement("p");
+    newParagraph.innerText = submenutext[section][i];
+
+  
+    mainContainerRight.appendChild(newParagraph);
+  }
+}
 
 
 
