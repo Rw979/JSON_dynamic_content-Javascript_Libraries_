@@ -27,7 +27,7 @@ body {
 
 
 
-#mainContainer_left{
+#mainContainerLeft{
   display: flex;
   background: #FEDFE1;
   flex-direction: column;
@@ -35,7 +35,7 @@ body {
   height: 1000vh;
 }
 
-#mainContainer_right{
+#mainContainerRight{
   display: flex;
   color: #FEDFE1;
   flex-direction: column;
