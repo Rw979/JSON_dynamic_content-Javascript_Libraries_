@@ -2,6 +2,10 @@ let headerGrid;
 let mainContainer;
 let mainContainerRightElement;
 let mainContainerLeftElement;
+/* Getting references to the profile and album menu divs （suggested by Professor Rieper）*/
+let profileMenuElement;
+let albumsMenuElement;
+let galleryMenuElement;
 
 let twiceCollection = [
   {
@@ -105,7 +109,7 @@ let twiceCollection = [
     "id": "imnayeon",
     "secondTitle": "TRACK LIST",
     "description": ["1. POP!","2. NO PROBELM (Feat. Felix of Stray Kids)","3. LOVE COUNTDOWN (Feat. Wonstein)","4. CANDYFLOSS","5. ALL OR NOTHING","6. HAPPY BIRTHDAY TO YOU","7. 노을만 예쁘다 (SUNSET)","Release Date: 2022-06-24"],
-    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/"
+    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_IM_nayeon.jpeg"
   },
   {
     "itemTitle": "Formula of Love: O+T=<3",
@@ -146,34 +150,14 @@ document.addEventListener("DOMContentLoaded", function () {
   mainContainerElement = document.getElementById("mainContainer");
   mainContainerRightElement = document.getElementById("mainContainerRight");
   mainContainerLeftElement = document.getElementById("mainContainerLeft");
+  profileMenuElement = document.getElementById("profileMenu");
+  albumsMenuElement = document.getElementById("albumsMenu");
+  galleryMenuElement = document.getElementById("galleryMenu");
 
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   let urlSection = urlParams.get('section');
   let urlID = urlParams.get('id');
-
-  if (urlSection != "Profile") {
-    if (urlSection == "Album") {
-    }
-    else if (urlSection == "Gallery") {
-    }
-    else {
-      for (let i = 0; i < twiceCollection.length; i++) {
-        if (twiceCollection[i]["category"] == urlSection || urlSection == "" || urlSection == null) {
-          createTwicePreview(twiceCollection[i]);
-        }
-      }
-    }
-  } 
-
-
-  else {
-    for (let i = 0; i < twiceCollection.length; i++) {
-      if (twiceCollection[i]["id"] == urlID) {
-        createTwicePage(twiceCollection[i]);
-      }
-    }
-  }
 
   /*Json for headerGrid*/
   let imageData = {
@@ -189,27 +173,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
   headerGridElement.appendChild(newImg);
   headerGridElement.appendChild(newText);
+  
+  /* CREATE MENU (Code by Professor Rieper)*/
+  for (const item of twiceCollection) {
+  	console.log(item);
+  	console.log(item['id']);
 
-  /*Json for mainContainer_right*/
-  let submenutext = {
-    "Profile": ["NAYEON", "JEONGYEON", "MOMO", "SANA", "JIHYO", "MINA", "DAHYUN", "CHAEYOUNG", "TZUYU"],
-    "Album": ["ZONE", "READY TO BE","MOONLIGHT SUNRISE", "BETWEEN 1&2","IM NAYEON", "Formula of Love: O+T=<3","CRY FOR ME", "Eyes wide open","Feel Special"]
-  };
+  	let newLink = document.createElement("a");
+  	newLink.innerText = item['itemTitle'];
+  	newLink.href = "index.html?section=" + item['category'] + "&id=" + item['id'];
 
-  for (let section in submenutext) {
-    let newHeading = document.createElement("h2");
-    newHeading.innerText = section;
+  	if (item['category'] == "Profile") {
+  		profileMenuElement.appendChild(newLink);
+  	}
+  	else if (item['category'] == "Album") {
+  		albumsMenuElement.appendChild(newLink);
+  	}
+  	else if (item['category'] == "Gallery"){
+  		galleryMenuElement.appendChild(newLink);
+  	}
 
-    mainContainerRightElement.appendChild(newHeading);
+  }
 
-    for (let i = 0; i < submenutext[section].length; i++) {
+   /* CREATE CONTENT (Code by Professor Rieper)*/
 
-      let newLink = document.createElement("a");
-      newLink.innerText = submenutext[section][i];
-      newLink.href = "index.html?section=" + section + "&id=" + twiceCollection[i].id;
-      mainContainerRightElement.appendChild(newLink);
+  for (const item of twiceCollection) {
+    
+   /* For individual page (Code by Professor Rieper*/
+  	if (urlSection == "Profile" || urlSection == "Album" || urlSection == "Gallery") {
+  		if (item['id'] == urlID) {
+  			createTwicePage(item);
+  		}
+  	}
 
-    }
+  	else {
+  		createTwicePreview(item);
+  	}
   }
 });
 

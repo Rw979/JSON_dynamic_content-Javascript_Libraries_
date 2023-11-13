@@ -25,19 +25,26 @@ body {
   margin-right: auto;
 }
 
-
-
 #mainContainerLeft{
   display: flex;
   background: #FEDFE1;
   flex-direction: column;
   width: 60vw;
-  height: 1000vh;
 }
+
+#mainContainerLeft img {
+  max-width: 100%;
+}
+
 
 #mainContainerRight{
   display: flex;
   color: #FEDFE1;
   flex-direction: column;
   margin-left: 20px;
+}
+
+#mainContainerRight > div {
+  display: flex;
+  flex-direction: column;
 }
