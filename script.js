@@ -6,6 +6,8 @@ let mainContainerLeftElement;
 let profileMenuElement;
 let albumsMenuElement;
 let galleryMenuElement;
+let swiperContainer;
+let swiperWrapper;
 
 let twiceCollection = [
   {
@@ -76,7 +78,7 @@ let twiceCollection = [
     "category": "Album",
     "id": "zone",
     "secondTitle":"TRACK LIST",
-    "description": ["1. Killin’ Me Good *TITLE", "2. Talkin’ About It (Feat. 24kGoldn)", "3. Closer", "4. Wishing On You", "5. Don’t Wanna Go Back (Duet with 헤이즈)", "6. Room", "7. Nightmare", "Release Date: 2023-08-18"],
+    "description1": ["Killin’ Me Good *TITLE", "Talkin’ About It (Feat. 24kGoldn)", "Closer", "Wishing On You", "Don’t Wanna Go Back (Duet with 헤이즈)", "Room", "Nightmare", "Release Date: 2023-08-18"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_zone.jpeg"
   },
   {
@@ -84,7 +86,7 @@ let twiceCollection = [
     "category": "Album",
     "id": "readytobe",
     "secondTitle": "TRACK LIST",
-    "description": ["1. SET ME FREE *Title","2. MOONLIGHT SUNRISE","3. GOT THE THRILLS","4. BLAME IT ON ME","5. WALLFLOWER","6. CRAZY STUPID LOVE","7. SET ME FREE (ENG)","Release Date: 2023-03-10"],
+    "description1": ["SET ME FREE *Title","MOONLIGHT SUNRISE","GOT THE THRILLS","BLAME IT ON ME","WALLFLOWER","CRAZY STUPID LOVE","SET ME FREE (ENG)","Release Date: 2023-03-10"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Ready_To_Be.jpeg"
   },
   {
@@ -92,7 +94,7 @@ let twiceCollection = [
     "category": "Album",
     "id": "moonlighhtsunrise",
     "secondTitle": "TRACK LIST",
-    "description": ["1. MOONLIGHT SUNRISE *TITLE","Release Date: 2023-01-20"],
+    "description1": ["MOONLIGHT SUNRISE *TITLE","Release Date: 2023-01-20"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Moonlight_Sunrise.jpeg"
   },
   {
@@ -100,7 +102,7 @@ let twiceCollection = [
     "category": "Album",
     "id": "between1&2",
     "secondTitle": "TRACK LIST",
-    "description": ["1. Talk that Talk *Title","2. Queen of Hearts","3. Basics","4. Trouble","5. Brave","6. Gone","7. When We Were Kids","Release Date: 2022-08-26"],
+    "description1": ["Talk that Talk *Title","Queen of Hearts","Basics","Trouble","Brave","Gone","When We Were Kids","Release Date: 2022-08-26"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Between%201%262.jpeg"
   },
   {
@@ -108,7 +110,7 @@ let twiceCollection = [
     "category": "Album",
     "id": "imnayeon",
     "secondTitle": "TRACK LIST",
-    "description": ["1. POP!","2. NO PROBELM (Feat. Felix of Stray Kids)","3. LOVE COUNTDOWN (Feat. Wonstein)","4. CANDYFLOSS","5. ALL OR NOTHING","6. HAPPY BIRTHDAY TO YOU","7. 노을만 예쁘다 (SUNSET)","Release Date: 2022-06-24"],
+    "description1": ["POP!","NO PROBELM (Feat. Felix of Stray Kids)","LOVE COUNTDOWN (Feat. Wonstein)","CANDYFLOSS","ALL OR NOTHING","HAPPY BIRTHDAY TO YOU","노을만 예쁘다 (SUNSET)","Release Date: 2022-06-24"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_IM_nayeon.jpeg"
   },
   {
@@ -116,15 +118,15 @@ let twiceCollection = [
     "category": "Album",
     "id": "formulaoflove",
     "secondTitle": "TRACK LIST",
-    "description": ["1. SCIENTIST *Title","2. MOONLIGHT","3. ICON","4. CRUEL","5. REAL YOU","6. F.I.L.A","7. LAST WALTZ","8. ESPRESSO","9. 알고 싶지 않아 (REWIND)","10. 선인장 (CACTUS)","11. PUSH & PULL (JIHYO, SANA, DAHYUN)","12. HELLO (NAYEON, MOMO, CHAEYOUNG)","13. 1, 3, 2 (JEONGYEON, MINA, TZUYU)","14. CANDY","15 The Feels (Korean Ver.)","16. The Feels","17. SCIENTIST (R3HAB Remix)","Release Date: 2021-11-12"],
-    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Formula_of_Love.png"
+    "description1": ["SCIENTIST *Title","MOONLIGHT","ICON","CRUEL","REAL YOU","F.I.L.A","LAST WALTZ","ESPRESSO","알고 싶지 않아 (REWIND)","선인장 (CACTUS)","PUSH & PULL (JIHYO, SANA, DAHYUN)","HELLO (NAYEON, MOMO, CHAEYOUNG)","1, 3, 2 (JEONGYEON, MINA, TZUYU)","CANDY","The Feels (Korean Ver.)","The Feels","SCIENTIST (R3HAB Remix)","Release Date: 2021-11-12"],
+    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Formula_of_Love.jpeg"
   },
   {
     "itemTitle": "CRY FOR ME",
     "category": "Album",
     "id": "cryforme",
     "secondTitle": "TRACK LIST",
-    "description": ["01. CRY FOR ME","Release Date: 2020-12-18"],
+    "description1": ["01. CRY FOR ME","Release Date: 2020-12-18"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Cry_For_Me.jpeg"
   },
   {
@@ -132,18 +134,26 @@ let twiceCollection = [
     "category": "Album",
     "id": "eyewideopen",
     "secondTitle": "TRACK LIST",
-    "description": ["01. I CAN'T STOP ME","02. HELL IN HEAVEN","03. UP NO MORE","04. DO WHAT WE LIKE","05. BRING IT BACK","06. BELIEVER","07. QUEEN","08. GO HARD","09. SHOT CLOCK","10. HANDLE IT","11. DEPEND ON YOU","12. SAY SOMETHING","13. BEHIND THE MASK","Release Date: 2020-10-26"],
-    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Eyes_wide_Open.png"
+    "description1": ["I CAN'T STOP ME","HELL IN HEAVEN","UP NO MORE","DO WHAT WE LIKE","BRING IT BACK","BELIEVER","QUEEN","GO HARD","SHOT CLOCK","HANDLE IT","DEPEND ON YOU","SAY SOMETHING","BEHIND THE MASK","Release Date: 2020-10-26"],
+    "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Eyes_wide_Open.jpeg"
   },
   {
     "itemTitle": "Feel Special",
     "category": "Album",
     "id": "feelspecial",
     "secondTitle": "TRACK LIST",
-    "description": ["01. FEEL SPECIAL","02. RAINBOW","03. GET LOUD","04. TRICK IT","05. LOVE FOOLISH","06. 21:29","07. BREAKTHROUGH (Korean Ver.)","Release Date: 2019-09-23"],
+    "description1": ["FEEL SPECIAL","RAINBOW","GET LOUD","TRICK IT","LOVE FOOLISH","21:29","BREAKTHROUGH (Korean Ver.)","Release Date: 2019-09-23"],
     "image": "https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Album_Feel_Special.jpeg"
+  },
+  {
+    "itemTitle": "IMAGES",
+    "category": "Gallery",
+    "id": "gallery01",
+    "image": ["https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Gallery_1.jpeg","https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Gallery_2.jpeg","https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Gallery_3.jpeg","https://Rw979.github.io/JSON_dynamic_content-Javascript_Libraries_/Gallery_5.jpeg"]
   }
 ];
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   headerGridElement = document.getElementById('headerGrid');
@@ -153,11 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
   profileMenuElement = document.getElementById("profileMenu");
   albumsMenuElement = document.getElementById("albumsMenu");
   galleryMenuElement = document.getElementById("galleryMenu");
+  swiperContainer = document.getElementById('swiper-container');
+  swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
 
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  let urlSection = urlParams.get('section');
-  let urlID = urlParams.get('id');
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let urlSection = urlParams.get('section');
+let urlID = urlParams.get('id');
+
 
   /*Json for headerGrid*/
   let imageData = {
@@ -169,10 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
   newImg.src = imageData.imageURL;
   newImg.style.width = '300px';
 
-  let newText = document.createTextNode(imageData.text);
+  let newTitle = document.createElement('h1'); 
+  newTitle.innerText = imageData.text; 
 
   headerGridElement.appendChild(newImg);
-  headerGridElement.appendChild(newText);
+  headerGridElement.appendChild(newTitle);
   
   /* CREATE MENU (Code by Professor Rieper)*/
   for (const item of twiceCollection) {
@@ -190,11 +204,12 @@ document.addEventListener("DOMContentLoaded", function () {
   		albumsMenuElement.appendChild(newLink);
   	}
   	else if (item['category'] == "Gallery"){
+  		swiperContainer.innerHTML = '<div class="swiper-wrapper"></div>';
   		galleryMenuElement.appendChild(newLink);
+      }
   	}
 
-  }
-
+ 
    /* CREATE CONTENT (Code by Professor Rieper)*/
 
   for (const item of twiceCollection) {
@@ -210,7 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
   		createTwicePreview(item);
   	}
   }
-});
+ 
+ });
 
 
 function createTwicePreview(incomingJSON){
@@ -261,13 +277,46 @@ function createTwicePage(incomingJSON) {
             newDiv.appendChild(newTitle2);
         }
 
-        newDiv.appendChild(newDescription);
+        let trackList = document.createElement('ol');  
+           for (let track of incomingJSON.description1) {
+        let trackItem = document.createElement('li');  
+           trackItem.innerText = track;
+           trackList.appendChild(trackItem);  
+        }
+        newDiv.appendChild(trackList);  
+
     } else if (incomingJSON.category === "Gallery") {
-        newDiv.appendChild(newImage);
-        newDiv.appendChild(newTitle);
-        newDiv.appendChild(newDescription);
+        let swiperWrapper = document.createElement('div');
+        swiperWrapper.className = 'swiper-wrapper';
+
+        for (let imgUrl of incomingJSON.image) {
+            let slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            let img = document.createElement('img');
+            img.src = imgUrl;
+            slide.appendChild(img);
+            swiperWrapper.appendChild(slide);
+        }
+
+        swiperContainer.appendChild(swiperWrapper);
+
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    }
+        
+    mainContainerLeftElement.appendChild(newDiv);
     }
 
-    mainContainerLeftElement.appendChild(newDiv);
-}
 

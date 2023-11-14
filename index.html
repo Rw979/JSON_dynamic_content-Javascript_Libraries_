@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Fangsiqi_website</title>
+    <title>Twice_website</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   </head>
   <body>
 
@@ -11,7 +12,16 @@
 
     <div id="mainContainer">
 
-      <div id="mainContainerLeft"></div>
+      <div id="mainContainerLeft">
+        <div id="swiper-container">
+  
+            <div  class="swiper-wrapper"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
       <div id="mainContainerRight">
         <h2>PROFILES</h2>
         <div id="profileMenu"></div>
@@ -23,13 +33,12 @@
       </div>
 
 
-      <h2 id="pageTitle"></h2>
-      <div id="outputGrid"></div>
-      <div id="projectDisplay"></div>
+      
 
     </div>
 
     <script src="script.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </body>
 </html>
 

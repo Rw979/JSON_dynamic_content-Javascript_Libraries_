@@ -10,11 +10,16 @@ body {
 
 #headerGrid{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 3vw;
+  font-weight: bold;
+  font-style: italic;
+  color:#FEDFE1;
+  font-size: 50px;
 }
+
 
 #mainContainer{
   display: flex;
@@ -32,6 +37,21 @@ body {
   width: 60vw;
 }
 
+
+#mainContainerLeft h2,p,h3{
+  display: flex;
+  justify-content: center;
+  color: #64363C;
+}
+
+
+#mainContainerLeft ol{
+  padding-left: 45%;
+  paddings-right: auto;
+  color: #64363C;
+}
+
+
 #mainContainerLeft img {
   max-width: 100%;
 }
@@ -44,7 +64,24 @@ body {
   margin-left: 20px;
 }
 
+#profileMenu a, #albumsMenu a, #galleryMenu a {
+  color: #FEDFE1; 
+  text-decoration: none;
+}
+
+#profileMenu a:hover, #albumsMenu a:hover, #galleryMenu a:hover{
+  color: #64363C; 
+  text-decoration: none; 
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
 #mainContainerRight > div {
   display: flex;
   flex-direction: column;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
 }
