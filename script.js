@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
   profileMenuElement = document.getElementById("profileMenu");
   albumsMenuElement = document.getElementById("albumsMenu");
   galleryMenuElement = document.getElementById("galleryMenu");
-  swiperContainer = document.getElementById('swiper-container');
-  swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+  swiperContainer = document.getElementById('.swiper');
+  swiperWrapper = document.querySelector('.swiper-wrapper');
 
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
@@ -204,7 +204,7 @@ let urlID = urlParams.get('id');
   		albumsMenuElement.appendChild(newLink);
   	}
   	else if (item['category'] == "Gallery"){
-  		swiperContainer.innerHTML = '<div class="swiper-wrapper"></div>';
+
   		galleryMenuElement.appendChild(newLink);
       }
   	}
@@ -286,9 +286,6 @@ function createTwicePage(incomingJSON) {
         newDiv.appendChild(trackList);  
 
     } else if (incomingJSON.category === "Gallery") {
-        let swiperWrapper = document.createElement('div');
-        swiperWrapper.className = 'swiper-wrapper';
-
         for (let imgUrl of incomingJSON.image) {
             let slide = document.createElement('div');
             slide.className = 'swiper-slide';
@@ -298,8 +295,6 @@ function createTwicePage(incomingJSON) {
             slide.appendChild(img);
             swiperWrapper.appendChild(slide);
         }
-
-        swiperContainer.appendChild(swiperWrapper);
 
         const swiper = new Swiper('.swiper', {
             loop: true,
